@@ -1,0 +1,133 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(216, 209, 209);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 250px;
+    padding-bottom: 150px;
+}
+
+.btn {
+    position: fixed;
+    left: 40px;
+    top: 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(137, 131, 228);
+    z-index: 1000;
+}
+.menuIcon {
+    width: 40px;
+}
+
+.conteneurMenu {
+    background: linear-gradient(45deg, rgb(137,131,228), rgb(248,138,138));
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.listeMenu {
+    padding: 0;
+    margin-top: 240px;
+    font-size: 68px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listeMenu a {
+    text-decoration: none;
+}
+
+.menuListeItem {
+    position: relative;
+    margin-top: 20px;
+    color: transparent;
+    list-style-type: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.itemListe {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    color: rgb(19, 7, 71);
+    top: 0;
+    height: 49%;
+    transition: all 0.8 cubic-bezier(0.16,1.8,0.38,0.98);
+}
+
+.itemListe span {
+    display: block;
+}
+
+/*qui veut de cibler le .itemListe juste
+après, c'est-à-dire le 2eme
+span à chaque fois*/
+
+.itemListe + .itemListe {
+    top: 48.9%;
+}
+
+.itemListe + .itemListe span {
+    transform: translateY(-49%);
+}
+
+.menuListeItem:hover .itemListe,
+.menuListeItem:active .itemListe {
+    color: #fff;
+    transform: skewX(12deg) translateX(5px);
+}
+
+.menuListeItem:hover .itemListe + .itemListe,
+.menuListeItem:active .itemListe + .itemListe{
+    color: #fff;
+    transform: skewX(12deg) translateX(-5px);
+}
+
+.menuListeItem::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    left: -10%;
+    right: -10%;
+    height: 4px;
+    border-radius: 4px;
+    margin-top: -2px;
+    background: #ff2c75;
+    transform: scale(0);
+    transition: transform 0.8s cubic-bezier(0.16,1.8,0.38,0.98);
+    z-index: 1;
+}
+
+.menuListeItem:hover::before,
+.menuListeItem:active::before {
+    transform: scale(1);
+}
+
+
